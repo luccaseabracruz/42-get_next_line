@@ -6,7 +6,13 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:39:08 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/14 12:20:00 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/15 18:14:26 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
+
+char	*get_next_line(int fd)
+{
+	
+}

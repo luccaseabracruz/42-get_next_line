@@ -6,12 +6,13 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:39:44 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/14 12:19:58 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/15 18:11:29 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+char	*get_next_line(int fd);
 
 #endif
