@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:39:29 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/19 18:56:22 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/19 20:25:04 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,31 +44,41 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_strjoinfree(char *s1, char *s2)
+char	*ft_bufferlinejoin(char *line, char *buffer)
 {
-	size_t	s1_len;
-	size_t	s2_len;
+	size_t	line_len;
+	size_t	buffer_len;
 	size_t	i;
-	char	*buffer;
+	char	*res;
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	buffer = ft_calloc(s1_len + s2_len + 1, sizeof(char));
-	if (!buffer)
+	line_len = ft_strlen(line);
+	buffer_len = ft_strlen(buffer);
+	buffer = ft_calloc(line_len + buffer_len + 1, sizeof(char));
+	if (!res)
 		return (NULL);
 	i = 0;
-	while (s1[i])
+	while (i < line_len)
 	{
-		buffer[i] = s1[i];
+		res[i] = line[i];
 		i++;
 	}
-	while (s2[i - s1_len])
+	while (i < line_len + buffer_len || res[i - 1] == '\n')
 	{
-		buffer[i] = s2[i - s1_len];
+		res[i] = buffer[i - line_len];
 		i++;
 	}
-	buffer[i] = '\0';
-	free(s1);
-	free(s2);
-	return (buffer);
+	res[i] = '\0';
+	free(line);
+	return (res);
+}
+
+int	ft_strchr(char *s, int c)
+{
+	while(*s)
+	{
+		if (*s == c)
+			return (1);
+		s++;
+	}
+	return (0);
 }
