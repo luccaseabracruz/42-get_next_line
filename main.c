@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 11:39:44 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/19 18:43:48 by lseabra-         ###   ########.fr       */
+/*   Created: 2025/05/19 17:05:35 by lseabra-          #+#    #+#             */
+/*   Updated: 2025/05/19 18:58:25 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
+#include <stdio.h>
+#include <string.h>
 
-#include <unistd.h>
-#include <stdlib.h>
+int	main(void)
+{
+	// test_join();
+}
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
+void	test_join(void)
+{
+	char	*s1 = strdup("Lucca ");
+	char	*s2 = strdup("Cruz");
+	char	*res = ft_strjoinfree(s1, s2);
 
-char	*get_next_line(int fd);
-void	*ft_calloc(size_t nmemb, size_t size);
-size_t	ft_strlen(char *s);
-char	*ft_strjoinfree(char *s1, char *s2);
-
-#endif
+	printf("%s\n", res);
+	free(res);
+}
