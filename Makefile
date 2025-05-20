@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/15 18:19:29 by lseabra-          #+#    #+#              #
-#    Updated: 2025/05/15 18:34:43 by lseabra-         ###   ########.fr        #
+#    Updated: 2025/05/20 17:43:48 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,9 @@ $(NAME): $(OBJS) | $(BUILD_PATH)
 	$(AR) $(NAME) $(OBJS)
 
 $(BUILD_PATH)/%.o: %.c | $(BUILD_PATH)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_PATH):
 	$(MKDIR) $(BUILD_PATH)
 
 clean:
