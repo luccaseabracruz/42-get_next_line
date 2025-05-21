@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:39:08 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/20 20:12:37 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:28:29 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +40,16 @@ char	*get_next_line(int fd)
 	ft_cleanbuffer(buffer);
 	return (line);
 }
+
+// int	main(void)
+// {
+// 	char	*line;
+// 	int		fd;
+// 	fd = open("1char.txt", O_RDONLY);
+// 	while ((line = get_next_line(fd)))
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	close(fd);
+// }
