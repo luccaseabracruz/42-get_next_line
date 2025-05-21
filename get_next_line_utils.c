@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:39:29 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/21 16:19:16 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/21 18:29:27 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	if (!ptr)
 		return (NULL);
 	i = 0;
-	while (i < size)
+	while (i < nmemb * size)
 	{
 		ptr[i] = '\0';
 		i++;
@@ -39,9 +39,7 @@ size_t	ft_linelen(char *s)
 
 	i = 0;
 	while (s && s[i] && s[i] != '\n')
-	{
 		i++;
-	}
 	if (s && s[i] == '\n')
 		i++;
 	return (i);
@@ -71,7 +69,6 @@ char	*ft_bufferlinejoin(char *line, char *buffer)
 	i--;
 	while (++i < line_len + buffer_len)
 		res[i] = buffer[i - line_len];
-	res[i] = '\0';
 	free(line);
 	return (res);
 }
