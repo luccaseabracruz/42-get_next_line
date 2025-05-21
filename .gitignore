@@ -1,3 +1,8 @@
+# My Config
+.vscode
+main.c
+*.txt
+
 # Prerequisites
 *.d
 
