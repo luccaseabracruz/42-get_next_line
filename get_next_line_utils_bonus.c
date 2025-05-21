@@ -6,14 +6,14 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:33:33 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/21 19:10:26 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/21 20:15:59 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdint.h>
 
-static void	*ft_calloc_bonus(size_t nmemb, size_t size)
+void	*ft_calloc_bonus(size_t nmemb, size_t size)
 {
 	char	*ptr;
 	size_t	i;
@@ -83,7 +83,7 @@ char	*ft_bufferlinejoin_bonus(char *line, char *buffer)
 	return (res);
 }
 
-char	*ft_clean_buffer_bonus(char *buffer)
+void	ft_clean_buffer_bonus(char *buffer)
 {
 	size_t	buffer_len;
 	size_t	i;
@@ -97,5 +97,4 @@ char	*ft_clean_buffer_bonus(char *buffer)
 	}
 	while (buffer[i])
 		buffer[i++] = '\0';
-	return (buffer);
 }
