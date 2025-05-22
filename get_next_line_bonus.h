@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 18:25:23 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/22 16:32:21 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:08:10 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # endif
 
 char	*get_next_line(int fd);
-void	*ft_calloc_bonus(size_t nmemb, size_t size);
+char	*ft_readline(int fd, char *line, char *buffer);
 int		ft_findlinebreak(char	*str);
+size_t	ft_strlen_chr(char *str, char c);
 char	*ft_bufferlinejoin_bonus(char *line, char *buffer);
 void	ft_clean_buffer_bonus(char *buffer);
 

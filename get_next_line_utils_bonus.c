@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:33:33 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/22 16:32:42 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:06:49 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,24 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-void	*ft_calloc_bonus(size_t nmemb, size_t size)
+char	*ft_readline(int fd, char *line, char *buffer)
 {
-	char	*ptr;
-	size_t	i;
+	int	bytes_read;
 
-	if (size != 0 && nmemb > (SIZE_MAX / size))
-		return (NULL);
-	ptr = malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (i < nmemb * size)
+	while (!ft_findlinebreak(buffer))
 	{
-		ptr[i] = 0;
-		i++;
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read < 0 || buffer[0] == '\0')
+		{
+			free(line);
+			return (NULL);
+		}
+		if (bytes_read == 0)
+			break ;
+		buffer[bytes_read] = '\0';
+		line = ft_bufferlinejoin_bonus(line, buffer);
 	}
-	return (ptr);
+	return (line);
 }
 
 int	ft_findlinebreak(char	*str)
@@ -44,7 +45,7 @@ int	ft_findlinebreak(char	*str)
 	return (0);
 }
 
-static size_t	ft_strlen_chr(char *str, char c)
+size_t	ft_strlen_chr(char *str, char c)
 {
 	size_t	i;
 
@@ -64,23 +65,20 @@ char	*ft_bufferlinejoin_bonus(char *line, char *buffer)
 
 	line_len = ft_strlen_chr(line, '\n');
 	buffer_len = ft_strlen_chr(buffer, '\n');
-	res = ft_calloc_bonus((line_len + buffer_len + 1), sizeof(char));
+	res = malloc((line_len + buffer_len + 1) * sizeof(char));
 	if (!res)
 	{
 		free(line);
 		ft_clean_buffer_bonus(buffer);
 		return (NULL);
 	}
-	while (buffer_len > 0)
-	{
+	res[line_len + buffer_len] = '\0';
+	buffer_len++;
+	while (--buffer_len > 0)
 		res[line_len + buffer_len - 1] = buffer[buffer_len - 1];
-		buffer_len--;
-	}
-	while (line_len > 0)
-	{
+	line_len++;
+	while (--line_len > 0)
 		res[line_len - 1] = line[line_len - 1];
-		line_len--;
-	}
 	free(line);
 	return (res);
 }
