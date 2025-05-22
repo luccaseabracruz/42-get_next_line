@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:31:02 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/22 16:33:53 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:53:36 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!buffer[fd])
 	{
-		buffer[fd] = ft_calloc_bonus(BUFFER_SIZE + 1, sizeof(char));
+		buffer[fd] = malloc(BUFFER_SIZE + 1 * sizeof(char));
 		if (!buffer[fd])
 			return (NULL);
+		buffer[fd][0] = '\0';
 	}
 	line = ft_bufferlinejoin_bonus(NULL, buffer[fd]);
 	while (!ft_findlinebreak(buffer[fd]))

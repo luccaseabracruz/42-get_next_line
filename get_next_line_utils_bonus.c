@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:33:33 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/22 16:46:43 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:53:54 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-void	*ft_calloc_bonus(size_t nmemb, size_t size)
-{
-	char	*ptr;
-	size_t	i;
+// void	*ft_calloc_bonus(size_t nmemb, size_t size)
+// {
+// 	char	*ptr;
+// 	size_t	i;
 
-	if (size != 0 && nmemb > (SIZE_MAX / size))
-		return (NULL);
-	ptr = malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (i < nmemb * size)
-	{
-		ptr[i] = 0;
-		i++;
-	}
-	return (ptr);
-}
+// 	if (size != 0 && nmemb > (SIZE_MAX / size))
+// 		return (NULL);
+// 	ptr = malloc(nmemb * size);
+// 	if (!ptr)
+// 		return (NULL);
+// 	i = 0;
+// 	while (i < nmemb * size)
+// 	{
+// 		ptr[i] = 0;
+// 		i++;
+// 	}
+// 	return (ptr);
+// }
 
 int	ft_findlinebreak(char	*str)
 {
