@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:33:33 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/22 16:53:54 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:06:49 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-// void	*ft_calloc_bonus(size_t nmemb, size_t size)
-// {
-// 	char	*ptr;
-// 	size_t	i;
+char	*ft_readline(int fd, char *line, char *buffer)
+{
+	int	bytes_read;
 
-// 	if (size != 0 && nmemb > (SIZE_MAX / size))
-// 		return (NULL);
-// 	ptr = malloc(nmemb * size);
-// 	if (!ptr)
-// 		return (NULL);
-// 	i = 0;
-// 	while (i < nmemb * size)
-// 	{
-// 		ptr[i] = 0;
-// 		i++;
-// 	}
-// 	return (ptr);
-// }
+	while (!ft_findlinebreak(buffer))
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read < 0 || buffer[0] == '\0')
+		{
+			free(line);
+			return (NULL);
+		}
+		if (bytes_read == 0)
+			break ;
+		buffer[bytes_read] = '\0';
+		line = ft_bufferlinejoin_bonus(line, buffer);
+	}
+	return (line);
+}
 
 int	ft_findlinebreak(char	*str)
 {
@@ -44,7 +45,7 @@ int	ft_findlinebreak(char	*str)
 	return (0);
 }
 
-static size_t	ft_strlen_chr(char *str, char c)
+size_t	ft_strlen_chr(char *str, char c)
 {
 	size_t	i;
 
@@ -64,7 +65,7 @@ char	*ft_bufferlinejoin_bonus(char *line, char *buffer)
 
 	line_len = ft_strlen_chr(line, '\n');
 	buffer_len = ft_strlen_chr(buffer, '\n');
-	res = malloc((line_len + buffer_len + 1)  * sizeof(char));
+	res = malloc((line_len + buffer_len + 1) * sizeof(char));
 	if (!res)
 	{
 		free(line);
