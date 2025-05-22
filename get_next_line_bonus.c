@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:31:02 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/21 20:15:15 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:33:53 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ char	*get_next_line(int fd)
 		bytes_read = read(fd, buffer[fd], BUFFER_SIZE);
 		if (bytes_read < 0 || buffer[fd][0] == '\0')
 		{
-			ft_clean_buffer_bonus(buffer[fd]);
-			return (free(line), NULL);
+			free(buffer[fd]);
+			buffer[fd] = NULL;
+			free(line);
+			return (NULL);
 		}
 		if (bytes_read == 0)
 			break ;
@@ -43,6 +45,11 @@ char	*get_next_line(int fd)
 		line = ft_bufferlinejoin_bonus(line, buffer[fd]);
 	}
 	ft_clean_buffer_bonus(buffer[fd]);
+	if (!line || !line[0])
+	{
+		free(buffer[fd]);
+		buffer[fd] = NULL;
+	}
 	return (line);
 }
 
@@ -52,7 +59,7 @@ char	*get_next_line(int fd)
 // {
 // 	char	*line;
 // 	int		fd;
-// 	fd = open("get_next_line.h", O_RDONLY);
+// 	fd = open("multiple_nl.txt", O_RDONLY);
 // 	while ((line = get_next_line(fd)))
 // 	{
 // 		printf("%s", line);

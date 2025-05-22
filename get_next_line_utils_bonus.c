@@ -6,10 +6,11 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:33:33 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/21 20:15:59 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:32:42 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line_bonus.h"
 #include <stdlib.h>
 #include <stdint.h>
 
@@ -67,6 +68,7 @@ char	*ft_bufferlinejoin_bonus(char *line, char *buffer)
 	if (!res)
 	{
 		free(line);
+		ft_clean_buffer_bonus(buffer);
 		return (NULL);
 	}
 	while (buffer_len > 0)
