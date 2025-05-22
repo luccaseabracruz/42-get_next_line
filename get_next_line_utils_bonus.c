@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:33:33 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/22 16:32:42 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:46:43 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,20 @@ char	*ft_bufferlinejoin_bonus(char *line, char *buffer)
 
 	line_len = ft_strlen_chr(line, '\n');
 	buffer_len = ft_strlen_chr(buffer, '\n');
-	res = ft_calloc_bonus((line_len + buffer_len + 1), sizeof(char));
+	res = malloc((line_len + buffer_len + 1)  * sizeof(char));
 	if (!res)
 	{
 		free(line);
 		ft_clean_buffer_bonus(buffer);
 		return (NULL);
 	}
-	while (buffer_len > 0)
-	{
+	res[line_len + buffer_len] = '\0';
+	buffer_len++;
+	while (--buffer_len > 0)
 		res[line_len + buffer_len - 1] = buffer[buffer_len - 1];
-		buffer_len--;
-	}
-	while (line_len > 0)
-	{
+	line_len++;
+	while (--line_len > 0)
 		res[line_len - 1] = line[line_len - 1];
-		line_len--;
-	}
 	free(line);
 	return (res);
 }
