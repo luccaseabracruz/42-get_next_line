@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:31:02 by lseabra-          #+#    #+#             */
-/*   Updated: 2025/05/23 14:20:47 by lseabra-         ###   ########.fr       */
+/*   Updated: 2025/05/23 20:23:26 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,31 +47,6 @@
  * - The caller is responsible for freeing the memory allocated for the returned line.
  * - If the file descriptor is closed or no more lines are available, the corresponding
  *   buffer is freed.
- *
- * @example
- * #include <fcntl.h>
- * #include <stdio.h>
- * #include "get_next_line_bonus.h"
- *
- * int main(void)
- * {
- *     char *line;
- *     int fd1 = open("file1.txt", O_RDONLY);
- *     int fd2 = open("file2.txt", O_RDONLY);
- *
- *     if (fd1 < 0 || fd2 < 0)
- *         return (1);
- *
- *     while ((line = get_next_line(fd1)) || (line = get_next_line(fd2)))
- *     {
- *         printf("%s", line);
- *         free(line);
- *     }
- *
- *     close(fd1);
- *     close(fd2);
- *     return (0);
- * }
  */
 char	*get_next_line(int fd)
 {
@@ -82,7 +57,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!buffer[fd])
 	{
-		buffer[fd] = malloc(BUFFER_SIZE + 1 * sizeof(char));
+		buffer[fd] = malloc((BUFFER_SIZE + 1) * sizeof(char));
 		if (!buffer[fd])
 			return (NULL);
 		buffer[fd][0] = '\0';
